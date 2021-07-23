@@ -14,7 +14,8 @@ app.get('/posts', (req, res) => {
     res.send(posts);
 });
 
-app.post('/posts', async (req, res) => {
+//need to rename to /posts/create/ in order to prevent ingress-nginx conflict (since ingress only reads paths, not GET / POST w/ the query endpoint
+app.post('/posts/create', async (req, res) => {
     const id = randomBytes(4).toString('hex');
     const { title } = req.body;
     
